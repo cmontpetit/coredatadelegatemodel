@@ -10,7 +10,6 @@
 		51E19F6B1C9F0367006EC530 /* CoredataDelegateModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 51E19F6A1C9F0367006EC530 /* CoredataDelegateModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51E19F721C9F0368006EC530 /* CoredataDelegateModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E19F671C9F0367006EC530 /* CoredataDelegateModel.framework */; };
 		51E19F771C9F0368006EC530 /* CoredataDelegateModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E19F761C9F0368006EC530 /* CoredataDelegateModelTests.swift */; };
-		51E19F821C9F0471006EC530 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 51E19F811C9F0471006EC530 /* readme.txt */; };
 		51E19F851C9F04B8006EC530 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51E19F831C9F04B8006EC530 /* Model.xcdatamodeld */; };
 		51E19F861C9F04DB006EC530 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51E19F831C9F04B8006EC530 /* Model.xcdatamodeld */; };
 		51E19F8B1C9F1975006EC530 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E19F8A1C9F1975006EC530 /* Task.swift */; };
@@ -50,7 +49,6 @@
 		51E19F711C9F0368006EC530 /* CoredataDelegateModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoredataDelegateModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E19F761C9F0368006EC530 /* CoredataDelegateModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataDelegateModelTests.swift; sourceTree = "<group>"; };
 		51E19F781C9F0368006EC530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51E19F811C9F0471006EC530 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		51E19F841C9F04B8006EC530 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		51E19F8A1C9F1975006EC530 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		51E19F8D1C9F199E006EC530 /* Occurence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Occurence.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				51E19F8D1C9F199E006EC530 /* Occurence.swift */,
 				51E19F6A1C9F0367006EC530 /* CoredataDelegateModel.h */,
 				51E19F6C1C9F0367006EC530 /* Info.plist */,
-				51E19F811C9F0471006EC530 /* readme.txt */,
 				51E19F831C9F04B8006EC530 /* Model.xcdatamodeld */,
 			);
 			path = CoredataDelegateModel;
@@ -220,7 +217,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51E19F821C9F0471006EC530 /* readme.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +439,7 @@
 				51E19F7D1C9F0368006EC530 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		51E19F7E1C9F0368006EC530 /* Build configuration list for PBXNativeTarget "CoredataDelegateModelTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +448,7 @@
 				51E19F801C9F0368006EC530 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
