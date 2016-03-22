@@ -100,36 +100,6 @@ class TaskMO: NSManagedObject {
             return super.count
         }
     }
-    private class xOccurencesMO: Occurences {
-        var taskMO: TaskMO
-        var delegate: Occurences
-        init(taskMO: TaskMO, delegate: Occurences) {
-            self.taskMO = taskMO
-            self.delegate = delegate
-        }
-        override subscript(index: Int) -> Occurenceable {
-            get {
-                taskMO.wakeup()
-                return delegate[index]
-            }
-            set(newValue) {
-                taskMO.touch()
-                delegate[index] = newValue
-            }
-        }
-        override func generate() -> IndexingGenerator<[Occurenceable]> {
-            taskMO.wakeup()
-            return delegate.generate()
-        }
-        override func append(occurence: Occurenceable) {
-            taskMO.touch()
-            delegate.append(occurence)
-        }
-        override var count: Int {
-            taskMO.wakeup()
-            return delegate.count
-        }
-    }
 }
 
 extension TaskMO: Taskable {
