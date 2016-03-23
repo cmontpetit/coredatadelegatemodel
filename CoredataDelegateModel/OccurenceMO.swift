@@ -22,7 +22,7 @@ class OccurenceMO: NSManagedObject {
         if (delegate != nil) {
             return
         }
-        let occurence = Occurence(name: nameMO!, date: dateMO!)
+        let occurence = Occurence(task: taskMO!, name: nameMO!, date: dateMO!)
         self.delegate = occurence
     }
     
@@ -33,10 +33,18 @@ class OccurenceMO: NSManagedObject {
         if delegate.date != dateMO {
             dateMO = delegate.date
         }
+        if (taskMO == nil) {
+            taskMO = delegate.task as? TaskMO // must be a MO
+        }
     }
 }
 
 extension OccurenceMO: Occurenceable {
+    
+    var task: Taskable {
+        wakeup()
+        return delegate.task
+    }
     
     var name: String {
         get {

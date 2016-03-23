@@ -46,7 +46,7 @@ class TaskMO: NSManagedObject {
             if let o = o as? OccurenceMO {
                 // nothing to do, already a managed object
                 occurenceMOs.append(o)
-                assert(o.owner == self)
+                assert(o.taskMO == self)
             } else {
                 newEntity = true
                 let entity =  NSEntityDescription.entityForName("OccurenceMO", inManagedObjectContext:self.managedObjectContext!)
@@ -58,11 +58,12 @@ class TaskMO: NSManagedObject {
             i += 1
         }
         
+        // check changes before assigning to MOs to avoid infinite save loop calls
+        
         if (newEntity) {
-            self.occurencesMO = NSSet(array:occurenceMOs)
+            self.occurencesMO = NSOrderedSet(array:occurenceMOs)
         }
         
-
         if delegate.name != nameMO {
             nameMO = delegate.name
         }

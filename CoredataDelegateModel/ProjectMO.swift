@@ -45,7 +45,7 @@ class ProjectMO: NSManagedObject {
         for o in tasks {
             if let o = o as? TaskMO {
                 // nothing to do, already a managed object
-                assert(o.owner == self)
+                assert(o.unused == self) // sanity check
                 taskMOs.append(o)
             } else {
                 newEntity = true
@@ -61,7 +61,7 @@ class ProjectMO: NSManagedObject {
         // check each value's change
         
         if (newEntity) {
-            self.tasksMO = NSSet(array:taskMOs)
+            self.tasksMO = NSOrderedSet(array:taskMOs)
         }
         
         

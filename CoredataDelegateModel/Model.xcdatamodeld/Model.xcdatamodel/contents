@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="OccurenceMO" representedClassName=".OccurenceMO" syncable="YES">
         <attribute name="dateMO" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastModifiedMO" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nameMO" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskMO" inverseName="occurencesMO" inverseEntity="TaskMO" syncable="YES"/>
+        <relationship name="taskMO" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskMO" inverseName="occurencesMO" inverseEntity="TaskMO" syncable="YES"/>
     </entity>
     <entity name="ProjectMO" representedClassName=".ProjectMO" syncable="YES">
         <attribute name="lastModifiedMO" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nameMO" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tasksMO" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskMO" inverseName="owner" inverseEntity="TaskMO" syncable="YES"/>
+        <relationship name="tasksMO" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TaskMO" inverseName="unused" inverseEntity="TaskMO" syncable="YES"/>
     </entity>
     <entity name="TaskMO" representedClassName=".TaskMO" syncable="YES">
         <attribute name="lastModifiedMO" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nameMO" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="occurencesMO" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OccurenceMO" inverseName="owner" inverseEntity="OccurenceMO" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectMO" inverseName="tasksMO" inverseEntity="ProjectMO" syncable="YES"/>
+        <relationship name="occurencesMO" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="OccurenceMO" inverseName="taskMO" inverseEntity="OccurenceMO" syncable="YES"/>
+        <relationship name="unused" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectMO" inverseName="tasksMO" inverseEntity="ProjectMO" syncable="YES"/>
     </entity>
     <elements>
         <element name="OccurenceMO" positionX="-558" positionY="-126" width="128" height="103"/>
-        <element name="TaskMO" positionX="-371" positionY="-124" width="128" height="103"/>
         <element name="ProjectMO" positionX="-173" positionY="-129" width="128" height="88"/>
+        <element name="TaskMO" positionX="-371" positionY="-124" width="128" height="103"/>
     </elements>
 </model>

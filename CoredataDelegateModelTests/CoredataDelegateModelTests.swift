@@ -45,6 +45,7 @@ class CoredataDelegateModelTests: XCTestCase {
         do {
             var project = try ProjectMO.theProject(moc)
             let projectName = project.name
+            
             try moc.save()
             moc.reset()
             
@@ -53,6 +54,7 @@ class CoredataDelegateModelTests: XCTestCase {
 
             var task = Task(name: "t1") as Taskable
             project.tasks.append(task)
+            
             try moc.save()
             moc.reset()
 
@@ -61,6 +63,7 @@ class CoredataDelegateModelTests: XCTestCase {
             task = project.tasks[0]
             assert(task.name == "t1")
             task.name = "t1.1"
+            
             try moc.save()
             moc.reset()
             
@@ -68,32 +71,36 @@ class CoredataDelegateModelTests: XCTestCase {
             task = project.tasks[0]
             assert(task.name == "t1.1")
             
-            var occurence1 = Occurence(name: "o1", date: NSDate()) as Occurenceable
-            var occurence2 = Occurence(name: "o2", date: NSDate()) as Occurenceable
+            var occurence1 = Occurence(task: task, name: "o1", date: NSDate()) as Occurenceable
+            var occurence2 = Occurence(task: task, name: "o2", date: NSDate()) as Occurenceable
             
             task.occurences.append(occurence1)
             task.occurences.append(occurence2)
             
             try moc.save()
             moc.reset()
+            
             project = try ProjectMO.theProject(moc)
             task = project.tasks[0]
             print(task.occurences.count)
             assert(task.occurences.count == 2)
-            assert(task.occurences[0].name == "o1" || task.occurences[1].name == "o1")
-            assert(task.occurences[0].name == "o2" || task.occurences[1].name == "o2")
+            assert(task.occurences[0].name == "o1")
+            assert(task.occurences[1].name == "o2")
+            assert(task.occurences[0].task.name == "t1.1")
+            assert(task.occurences[1].task.name == "t1.1")
             
             occurence1 = task.occurences[0]
             occurence1.name = "o1.1"
             occurence2 = task.occurences[1]
             occurence2.name = "o2.1"
+            
             try moc.save()
             moc.reset()
 
             project = try ProjectMO.theProject(moc)
             task = project.tasks[0]
-            assert(task.occurences[0].name == "o1.1" || task.occurences[1].name == "o1.1")
-            assert(task.occurences[0].name == "o2.1" || task.occurences[1].name == "o2.1")
+            assert(task.occurences[0].name == "o1.1")
+            assert(task.occurences[1].name == "o2.1")
 
         } catch let error as NSError  {
             print(error)

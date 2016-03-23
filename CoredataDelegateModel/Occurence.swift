@@ -11,15 +11,17 @@ import Foundation
 public protocol Occurenceable {
     var name: String {get set}
     var date: NSDate { get set}
+    var task: Taskable { get }
 }
 
 class Occurence: Occurenceable {
     
+    var task: Taskable
     var name: String
-    
     var date: NSDate
     
-    init(name: String, date: NSDate) {
+    init(task: Taskable, name: String, date: NSDate) {
+        self.task = task
         self.name = name
         self.date = date
     }
