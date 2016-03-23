@@ -16,6 +16,15 @@ public protocol Taskable {
 public class Occurences: SequenceType {
     
     var occurences: [Occurenceable] = []
+    var task: Taskable!
+    
+    private init() {
+        
+    }
+    
+    public init(task: Taskable) {
+        self.task = task
+    }
     
     public subscript(index: Int) -> Occurenceable {
         get {
@@ -47,6 +56,7 @@ class Task: Taskable {
     
     init(name: String){
         self.name = name
+        self.occurences.task = self
     }
     
     init(name: String, occurences: [Occurenceable]){

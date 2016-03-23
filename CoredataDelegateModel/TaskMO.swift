@@ -74,7 +74,7 @@ class TaskMO: NSManagedObject {
         
         init(taskMO: TaskMO, occurences: [Occurenceable]) {
             self.taskMO = taskMO
-            super.init()
+            super.init(task: taskMO)
             self.occurences = occurences
         }
         override subscript(index: Int) -> Occurenceable {

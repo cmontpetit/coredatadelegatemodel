@@ -17,6 +17,15 @@ public protocol Projectable {
 public class Tasks: SequenceType {
     
     var tasks: [Taskable] = []
+    var project: Projectable!
+    
+    private init() {
+        
+    }
+    
+    public init(project: Projectable) {
+        self.project = project
+    }
     
     public subscript(index: Int) -> Taskable {
         get {
@@ -48,6 +57,7 @@ class Project: Projectable {
     
     init(name: String){
         self.name = name
+        self.tasks.project = self
     }
     
     init(name: String, tasks: [Taskable]){

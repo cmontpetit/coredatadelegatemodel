@@ -74,7 +74,7 @@ class ProjectMO: NSManagedObject {
         var projectMO: ProjectMO
         init(projectMO: ProjectMO, tasks: [Taskable]) {
             self.projectMO = projectMO
-            super.init()
+            super.init(project: projectMO)
             self.tasks = tasks
         }
         override subscript(index: Int) -> Taskable {
