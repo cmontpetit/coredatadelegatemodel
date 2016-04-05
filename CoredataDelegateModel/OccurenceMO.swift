@@ -15,6 +15,7 @@ class OccurenceMO: NSManagedObject {
     var delegate: Occurenceable!
 
     private func touch() {
+        wakeup()
         lastModifiedMO = NSDate()
     }
     
@@ -34,7 +35,7 @@ class OccurenceMO: NSManagedObject {
             dateMO = delegate.date
         }
         if (taskMO == nil) {
-            taskMO = delegate.task as? TaskMO // must be a MO
+            // no need to set the reverse, framework will set it.
         }
     }
 }

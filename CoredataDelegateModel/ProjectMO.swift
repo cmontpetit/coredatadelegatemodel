@@ -15,6 +15,7 @@ class ProjectMO: NSManagedObject {
     private var delegate: Projectable!
     
     private func touch() {
+        wakeup()
         lastModifiedMO = NSDate()
     }
     

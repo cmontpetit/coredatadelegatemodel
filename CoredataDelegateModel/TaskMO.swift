@@ -15,6 +15,7 @@ class TaskMO: NSManagedObject {
     internal var delegate: Taskable!
     
     private func touch() {
+        wakeup()
         lastModifiedMO = NSDate()
     }
     
