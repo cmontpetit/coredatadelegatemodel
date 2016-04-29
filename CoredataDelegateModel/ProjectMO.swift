@@ -38,7 +38,7 @@ class ProjectMO: NSManagedObject {
     }
     
     override func willSave() {
-        
+        super.willSave()
         if (deleted) {
             return
         }
