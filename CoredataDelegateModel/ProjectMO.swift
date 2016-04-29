@@ -54,8 +54,7 @@ class ProjectMO: NSManagedObject {
                 taskMOs.append(o)
             } else {
                 newEntity = true
-                let entity =  NSEntityDescription.entityForName("TaskMO", inManagedObjectContext:self.managedObjectContext!)
-                let taskMO = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext) as! TaskMO
+                let taskMO = NSEntityDescription.insertNewObjectForEntityForName("TaskMO", inManagedObjectContext: self.managedObjectContext!) as! TaskMO
                 tasks[i] = taskMO
                 taskMO.delegate = o
                 taskMOs.append(taskMO)

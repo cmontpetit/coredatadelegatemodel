@@ -54,8 +54,7 @@ class TaskMO: NSManagedObject {
                 assert(o.taskMO == self)
             } else {
                 newEntity = true
-                let entity =  NSEntityDescription.entityForName("OccurenceMO", inManagedObjectContext:self.managedObjectContext!)
-                let occurenceMO = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext) as! OccurenceMO
+                let occurenceMO = NSEntityDescription.insertNewObjectForEntityForName("OccurenceMO", inManagedObjectContext: self.managedObjectContext!) as! OccurenceMO
                 occurences[i] = occurenceMO
                 occurenceMO.delegate = o
                 occurenceMOs.append(occurenceMO)
