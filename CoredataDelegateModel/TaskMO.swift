@@ -49,8 +49,9 @@ class TaskMO: NSManagedObject {
         var newEntity = false
         for o in occurences {
             if let o = o as? OccurenceMO {
-                // nothing to do, already a managed object
                 occurenceMOs.append(o)
+                // Note that this assert is only true if an occurence cannot end up in another
+                // task after its previous task has been deleted.
                 assert(o.taskMO == self)
             } else {
                 newEntity = true
@@ -65,6 +66,7 @@ class TaskMO: NSManagedObject {
         // check changes before assigning to MOs to avoid infinite save loop calls
         
         if (newEntity) {
+            // todo: handle deletion of occurernces!
             self.occurencesMO = NSOrderedSet(array:occurenceMOs)
         }
         

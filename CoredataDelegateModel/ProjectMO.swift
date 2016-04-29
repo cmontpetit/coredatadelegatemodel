@@ -47,16 +47,17 @@ class ProjectMO: NSManagedObject {
         let tasks = delegate.tasks
         var i = 0
         var newEntity = false
-        for o in tasks {
-            if let o = o as? TaskMO {
-                // nothing to do, already a managed object
-                assert(o.unused == self) // sanity check
-                taskMOs.append(o)
+        for t in tasks {
+            if let t = t as? TaskMO {
+                // Note that this assert is only true if a task cannot end up in another
+                // project after its previous project has been deleted.
+                assert(t.unused == self)
+                taskMOs.append(t)
             } else {
                 newEntity = true
                 let taskMO = NSEntityDescription.insertNewObjectForEntityForName("TaskMO", inManagedObjectContext: self.managedObjectContext!) as! TaskMO
                 tasks[i] = taskMO
-                taskMO.delegate = o
+                taskMO.delegate = t
                 taskMOs.append(taskMO)
             }
             i += 1
@@ -65,6 +66,7 @@ class ProjectMO: NSManagedObject {
         // check each value's change
         
         if (newEntity) {
+            // todo: handle deletion of tasks!
             self.tasksMO = NSOrderedSet(array:taskMOs)
         }
         
