@@ -28,6 +28,11 @@ class OccurenceMO: NSManagedObject {
     }
     
     override func willSave() {
+        
+        if (deleted) {
+            return
+        }
+        
         if delegate.name != nameMO {
             nameMO = delegate.name
         }

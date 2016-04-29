@@ -39,6 +39,10 @@ class ProjectMO: NSManagedObject {
     
     override func willSave() {
         
+        if (deleted) {
+            return
+        }
+        
         var taskMOs: [TaskMO] = []
         let tasks = delegate.tasks
         var i = 0

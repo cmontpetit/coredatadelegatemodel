@@ -39,6 +39,10 @@ class TaskMO: NSManagedObject {
     
     override func willSave() {
         
+        if (deleted) {
+            return
+        }
+        
         var occurenceMOs: [OccurenceMO] = []
         let occurences = delegate.occurences
         var i = 0
